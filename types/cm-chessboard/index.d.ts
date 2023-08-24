@@ -285,7 +285,7 @@ export const Chessboard: {
                 };
                 animationDuration?: number;
             };
-            extensions?: T[];
+            extensions?: Array<T & { props?: T['class']['prototype']['props'] }>;
         },
     ): Chessboard & ExtractExtension<T>;
 };
@@ -294,32 +294,6 @@ export const Chessboard: {
 
 export interface Chessboard {
     state: ChessboardState | undefined;
-
-    // tslint:disable-next-line:no-misused-new
-    constructor(
-        context: HTMLElement,
-        props?: {
-            position?: string;
-            orientation?: string;
-            responsive?: boolean;
-            language?: string;
-            assetsUrl?: string;
-            assetsCache?: boolean;
-            style?: {
-                cssClass?: string;
-                showCoordinates?: boolean;
-                borderType?: string;
-                aspectRatio?: number;
-                pieces?: {
-                    type?: string;
-                    file?: string;
-                    tileSize?: number;
-                };
-                animationDuration?: number;
-            };
-            extensions?: Array<{ class: typeof Extension; props?: any }>;
-        },
-    ): Chessboard;
 
     setPiece(square: Square, piece: Piece, animated?: boolean): Promise<void>;
 

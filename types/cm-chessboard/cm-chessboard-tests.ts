@@ -48,7 +48,11 @@ board.destroy();
 
 // $ExpectType Chessboard & { recorderInit(): Promise<void>; recorderStart(): Promise<void>; recorderStop(): Promise<void>; recorderPause(ms: number): Promise<void>; recorderResume(): Promise<void>; }
 const boardRenderVideo = new cm.Chessboard(div, {
-    extensions: [{ class: cm.RenderVideo }],
+    extensions: [
+        {
+            class: cm.RenderVideo,
+        },
+    ],
 });
 
 // $ExpectType Promise<void>
